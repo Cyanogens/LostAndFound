@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "heep://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--将数据库式命名改为驼峰命名-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.cya.pojo"/>
+    </typeAliases>
+
+
+
+</configuration>

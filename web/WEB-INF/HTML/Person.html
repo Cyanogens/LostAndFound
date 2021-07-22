@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎光临</title>
+    <link rel="stylesheet" href="../CSS/Person.css">
+</head>
+<body>
+<div id="big" style="text-align:center">
+    <div id="top">
+        <div class="top_title">
+            <span>欢迎来到招失网</span>
+        </div>
+        <marquee direction=left scrolldelay=600 scrollamount=50>
+            <font size="4" color=#FF2D2D>最 美 不 过 拾 金 不 昧 的 你</font>
+        </marquee>
+
+    </div>
+    <div id="center">
+        <div id="left">
+            <div class = "leftTitle">我的信息</div>
+            <div class="content">
+                <div class="nav">
+                    <div class="nav-li">
+                        <div class="title">学号</div>
+                        <ul>
+                            <li>
+                                2025121025
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </br>
+                </br>
+                <div class="nav">
+                    <div class="nav-li">
+                        <div class="title">姓名</div>
+                        <ul>
+                            <li>
+                                ×××
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </br>
+                </br>
+                <div class="nav">
+                    <div class="nav-li">
+                        <div class="title">联系电话</div>
+                        <ul>
+                            <li>
+                                18588874029
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </br>
+                </br>
+                <div class="nav">
+                    <div class="nav-li">
+                        <div class="title">联系地址</div>
+                        <ul>
+                            <li>
+                                ..........
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            <div class = "changeMessage">
+                <a href="changeMymessage.html" style="text-decoration: none">编辑资料</a>
+            </div>
+
+        </div>
+        <div id="right">
+            <div id="modified">
+                <ul>
+                    <li>
+                        <p>内容1</p>
+                        <input type="button" value="修改">
+                    </li>
+                    <li>
+                        <p>内容2</p>
+                        <input type="button" value="修改">
+                    </li>
+                    <li>
+                        <p>内容3</p>
+                        <input type="button" value="修改">
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+<script>
+    var pText = document.getElementsByTagName('p'),
+        btn = document.getElementsByTagName('input');
+
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].index = i;
+        btn[i].flag = false; // 不可修改
+        btn[i].onclick = function() {
+            if (this.flag) {
+                this.style.cssText = 'background:#51cbfc;color:#fff;';
+                this.value = '修改';
+                pText[this.index].setAttribute('contenteditable', false) // 当前p标签可编辑属性为假
+            } else { // 不可修改 变为可修改
+                this.style.cssText = 'background:#f60;color:#fff;';
+                this.value = '确定';
+                pText[this.index].setAttribute('contenteditable', true)
+                pText[this.index].focus(); //  聚焦
+            }
+            this.flag = !this.flag;
+        }
+    }
+</script>
+</html>

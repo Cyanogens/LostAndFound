@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cya.dao.GoodsMapper">
+    <insert id="addGoods" parameterType="goods">
+        insert into lostandfound.goods (goods_Id , pic, descs, times, place, user_Id, release_Time, label, type_Table)
+        values (#{goods_Id}, #{pic}, #{descs}, #{times}, #{place}, #{user_Id}, #{release_Time}, #{label}, #{type_Table})
+    </insert>
+
+    <delete id="deleteGoods" parameterType="int">
+        delete from lostandfound.goods where goods_Id = #{goods_ID}
+    </delete>
+
+    <update id="updateGoods" parameterType="goods">
+        update lostandfound.goods
+        set pic=#{pic}, descs=#{descs}, times=#{times},place=#{place},
+            user_Id=#{user_Id},label=#{label}
+        where goods_Id = #{goods_Id}
+    </update>
+
+    <select id="queryAllGoods" resultType="goods">
+        select * from lostandfound.goods;
+    </select>
+
+    <select id="queryFuzzyGoods" parameterType="string" resultType="goods">
+        select * from lostandfound.goods
+        <where>
+            <if test='label != "请选择"'>
+                and goods.descs = #{label}
+            </if>
+
+            <if test='str != "" and str != null'>
+                and goods.descs like #{str};
+            </if>
+        </where>
+
+    </select>
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--读取配置文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--连接池-->
+    <bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+        <!-- Configure the minimum and maximum value of the connection pool -->
+        <property name="minimumIdle" value="5" />
+        <property name="maximumPoolSize" value="15" />
+        <!-- Configure the timeout period for obtaining a connection waiting timeout -->
+        <property name="connectionTimeout" value="60000" />
+        <property name="connectionTestQuery" value="SELECT 1"/>
+        <property name="validationTimeout" value="5000"/>
+        <property name="poolName" value="CcosDataSource"/>
+        <property name="idleTimeout" value="60000" />
+        <property name="maxLifetime" value="600000" />
+    </bean>
+
+
+    <!--sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <property name="configLocation" value="classpath:Mybatisconfig.xml"/>
+    </bean>
+
+
+    <!--等价于原来注入获得sqlSession-->
+    <bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--扫描的mapper包-->
+        <property name="basePackage" value="com.cya.dao"/>
+    </bean>
+
+</beans>
