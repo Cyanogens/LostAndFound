@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>招失网</title>
-  <link rel="stylesheet" href="../CSS/Login.css">
-  <link rel="stylesheet" href="../JS/Login.js">
+  <link rel="stylesheet" href="Login.css">
+  <link rel="stylesheet" href="Login.js">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 
 <div class="turn">
   <div class="over">
-    <form method="post" action="Home.html" class="login">
+    <form action="http://localhost:8080/LostAndFound_war_exploded/LostAndFound/login" class="login" method="post">
       <h1>用户登录</h1>
       <input type="text" name="number" maxlength="10" placeholder="学号" required>
       <input type="password" name="pwd" placeholder="密码" required>
@@ -28,7 +28,7 @@
       <input type="text" name="name" placeholder="姓名" required>
       <input type="password" name="pwd" placeholder="密码" required>
       <input type="text" name="telephone" maxlength="11" placeholder="联系电话" required>
-      <input type="text" name="address" placeholder="地址" required>
+
       <input type="submit" class="btn" value="完 成">
     </form>
   </div>
@@ -41,7 +41,7 @@
       // 兼容FF和IE和Opera
       var theEvent = e || window.event;
       var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-      if (code == 13) {
+      if (code === 13) {
         $('#submit').click();//具体处理函数
         return false;
       }

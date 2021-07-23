@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>添加</title>
-    <link rel="stylesheet" href="../CSS/Add.css">
-    <link rel="stylesheet" href="../JS/Add.js">
+    <link rel="stylesheet" href="../../Add.css">
+    <link rel="stylesheet" href="../../JS/Add.js">
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/book/updatingBook" method="post" enctype="multipart/form-data">
+<form action="http://localhost:8080/LostAndFound_war_exploded/LostAndFound/adding" method="post" enctype="multipart/form-data">
     <div>
-        <select class="background input" style="text-align: center">
-            <option selected disabled>——请选择发布类型——</option>
+        <select class="background input" style="text-align: center" required="required" name="type">
             <option>寻物启事</option>
             <option>失物招领</option>
         </select>
     </div>
     <div>
-        <select class="background input" style="text-align: center">
-            <option selected disabled>——请选择物品类别——</option>
+        <select class="background input" style="text-align: center" name="label" required="required">
+            <option>其他</option>
             <option>数码</option>
             <option>耳机</option>
             <option>雨伞</option>
             <option>衣物</option>
             <option>背包</option>
-            <option>其他</option>
+
         </select>
     </div>
-    <div><input class="input background" type="date" placeholder="日期"></div>
-    <div><input class="input background" type="place" placeholder="地点"></div>
-    <div><input class="input background" type="phone" placeholder="联系电话"></div>
+    <div><input class="input background" type="date" placeholder="日期" required="required"></div>
+    <div><input class="input background" type="text" placeholder="地点" required="required"></div>
+    <div><input class="input background" type="text" placeholder="联系电话" required="required"></div>
     <textarea class="detail background" placeholder="详情"></textarea>
     <div id="preview"></div>
     <div class="button">
-        <input  class="file" type="file" onchange="preview(this)">
+        <input  class="file" type="file" onchange="preview(this)" required="required">
         <div class="file_btn">上传照片</div>
     </div>
     <div class="button">

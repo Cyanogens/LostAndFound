@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>springMvc</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
 
@@ -37,7 +37,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>All.html</welcome-file>
+        <welcome-file>Login.html</welcome-file>
     </welcome-file-list>
 
 </web-app>
