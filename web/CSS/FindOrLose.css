@@ -1,18 +1,20 @@
 /*搜索栏*/
+html{
+    z-index: 1;
+}
 .top{
     float: top;
     text-align: center;
-    margin:auto;
 }
-#body{
+#Body{
+    margin-left: 13%;
     width: auto;
     float: none;
-    background-color: #f0776c;
+    background-color: rgba(255, 255, 255, 0);
 }
 .find{
     position: relative;
     padding: 0;
-    margin-top: 20px;
     margin-left: 200px;
     display: flex;
     justify-content: center;
@@ -44,7 +46,7 @@ span{
     border-radius: 0 30px 30px 0;
     outline: none;
 }
-物品浏览
+/*物品浏览*/
 .masonry {
     -moz-column-count: 4; /* 火狐 */
     -webkit-column-count: 4; /* Safari 和 谷歌 */
@@ -56,9 +58,10 @@ span{
     margin: 1em auto;
 }
 
-img {
+#pic{
     height: 200px;
-    border-radius: 5px;
+    width: 100%;
+    border-radius:5px;
     border: 1px solid red;
 }
 
@@ -94,13 +97,12 @@ img {
     / / two columns on larger phones
     }
 }
-返回顶端按钮
+/*返回顶端按钮*/
 .back_top {
     z-index: 9999;
     position: fixed;
     right: 10px;
     bottom: 0;
-
 }
 .back_top_button{
     width: 90px;

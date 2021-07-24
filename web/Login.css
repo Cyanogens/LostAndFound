@@ -1,12 +1,30 @@
 body{
-    background-color: #abdde8;
+    background-color: #ffffff;
     text-align: center;
     overflow: hidden;
     margin: 0;
 }
-
+#verifyCode{
+    background-color: #e2faeb;
+    width: 160px;
+    height: 48px;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 25px;
+    padding: 0 16px;
+    font-size: 18px;
+    color: #c4c3ca;
+    font-weight: 500;
+    text-align: center;
+    outline: none;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(78, 73, 79, .5);
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 1px);
+}
 .switch{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgb(127, 177, 238);
     width: 400px;
     height: 140px;
     position: absolute;
@@ -18,7 +36,7 @@ body{
 #change:checked+label,
     /* +用来选择同级后面最近的元素  */
 #change:not(:checked)+label{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgb(122, 149, 203);
     color: #958686;
     width: 280px;
     padding: 8px 0;
@@ -59,7 +77,7 @@ body{
 }
 form{
     position: absolute;
-    background-image: linear-gradient(19deg, #839aa8 0%, #914aba);
+    background-image: linear-gradient(19deg, #839aa8 0%, #6badde);
     height: 100%;
     border-radius: 8px;
     transform-style: preserve-3d;
@@ -77,7 +95,7 @@ h1{
 }
 
 input{
-    background-color: #4E495D;
+    background-color: #e2faeb;
     width: 70%;
     height: 48px;
     border-radius: 8px;
@@ -95,11 +113,11 @@ input{
 }
 .login input:nth-child(-n+3){
     /* 选择class为login的子元素中的前三个input */
-    margin: 35px 0;
+    margin: 30px 0;
 }
 
 .btn{
-    background-color: #981E61;
+    background-color: #959494;
     border: none;
     width: 280px;
     font-size: 24px;
@@ -114,5 +132,10 @@ input{
 form input:focus{
     background-color:#fff;
     width:230px;
+    color:#333
+}
+#verifyCode:focus{
+    background-color:#fff;
+    width:120px;
     color:#333
 }

@@ -18,9 +18,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>springMvc</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 
     <!--配置乱码过滤-->
     <filter>
@@ -37,7 +36,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>Login.html</welcome-file>
+        <welcome-file>Login.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

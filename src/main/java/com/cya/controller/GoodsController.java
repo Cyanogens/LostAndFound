@@ -22,18 +22,18 @@ public class GoodsController {
     private GoodsServiceImpl goodsService;
 
     //登录
-    @RequestMapping("/login")
+    @RequestMapping("/toPerson")
     public String login(){
-        return "All";
+        return "Person";
     }
 
-    //展示所有物品
-    @RequestMapping("/main")
-    public String allGoods(Model model){
-        List<Goods> goods = goodsService.queryAllGoods();
-        model.addAttribute("list", goods);
-        return "All";
-    }
+//    //展示所有物品
+//    @RequestMapping("/main")
+//    public String allGoods(Model model){
+//        List<Goods> goods = goodsService.queryAllGoods();
+//        model.addAttribute("list", goods);
+//        return "";
+//    }
 
     //跳转到添加页面
     @RequestMapping("/toAdd")

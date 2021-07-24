@@ -1,10 +1,14 @@
 form{
     text-align: center;
-    margin: auto;
-    float: none;
+    margin-left: calc(30vw);
+    width: calc(30vw);
+    padding: 10px 40px;
+    border: 2px solid #5effb2;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0);
 }
 div{
-    margin: 15px auto;
+    margin:auto;
     position: relative;
     display: flex;
     justify-content: center;

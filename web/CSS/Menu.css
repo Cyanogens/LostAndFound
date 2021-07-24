@@ -1,6 +1,9 @@
+html{
+    background: rgba(243, 243, 243, 0.72);
+}
 /*左侧导航栏*/
 #menu{
-    width: 90%;
+    width: 12%;
     height: auto;
     float: left;
     clear: both;
@@ -25,7 +28,7 @@ li a {
     padding: 20px;
     border-left: 5px solid;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     text-decoration: none;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
