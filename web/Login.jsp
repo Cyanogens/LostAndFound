@@ -16,7 +16,9 @@
 <!-- 旋转开关 -->
 <div class="switch"><h2>没有账号/已有帐号</h2></div>
 <input type="checkbox" style="display: none;" id="change">
-<label for="change" id="getChance"><div>快 去 注  册/登 录</div></label>
+<label for="change" id="getChance">
+    <div>快 去 注  册/登 录</div>
+</label>
 
 <div class="turn">
     <div class="over">
@@ -29,10 +31,10 @@
             <input type="submit" class="btn" value="登 录">
         </form>
 
-        <form method="post" action="http://localhost:8080/LostAndFound_war_exploded/register" class="sign">
+        <form method="post" action="${pageContext.request.contextPath}/register" class="sign">
             <h1>用户注册</h1>
             <input type="text" name="user_Xh" maxlength="10" placeholder="学号" required>
-            <input type="text" name="username" placeholder="姓名" required>
+            <input type="text" name="user_Name" placeholder="姓名" required>
             <input type="password" name="password" placeholder="密码" required>
             <input type="text" name="telephone" maxlength="11" placeholder="联系电话" required>
             <input type="submit" class="btn" value="完 成">
@@ -42,13 +44,13 @@
 <canvas id="canv"></canvas>
 <!--背景-->
 <script>
-    var c = document.getElementById('canv');
-    var $ = c.getContext('2d');
+    const c = document.getElementById('canv');
+    const $ = c.getContext('2d');
 
-    var w = c.width = window.innerWidth;
-    var h = c.height = window.innerHeight;
+    let w = c.width = window.innerWidth;
+    let h = c.height = window.innerHeight;
 
-    var draw = function(a, b, t) {
+    const draw = function (a, b, t) {
         $.lineWidth = 0.8;
         $.fillStyle = 'white';
         $.fillRect(0, 0, w, h);
@@ -62,11 +64,12 @@
                     Math.floor(h / 2 + j / 2 *
                         Math.sin(j / 50 - t / 50 - i / 118) +
                         (i * 0.9) * Math.sin(j / 25 - (i + t) / 65)));
-            };
+            }
+            ;
             $.stroke();
         }
-    }
-    var t = 0;
+    };
+    let t = 0;
 
     window.addEventListener('resize', function() {
         c.width = w = window.innerWidth;
@@ -74,7 +77,7 @@
         $.fillStyle = 'hsla(277, 95%, 55%, 1)';
     }, false);
 
-    var run = function() {
+    const run = function () {
         window.requestAnimationFrame(run);
         t += 1;
         draw(33, 52 * Math.sin(t / 2400), t);

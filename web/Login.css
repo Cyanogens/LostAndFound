@@ -37,7 +37,7 @@ body{
     /* +用来选择同级后面最近的元素  */
 #change:not(:checked)+label{
     background-color: rgb(122, 149, 203);
-    color: #958686;
+    color: #14b2d2;
     width: 280px;
     padding: 8px 0;
     /* 用padding方便文字垂直居中 */

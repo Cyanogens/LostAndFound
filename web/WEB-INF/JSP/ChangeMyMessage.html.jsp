@@ -10,7 +10,7 @@
 <head>
     <title>欢迎光临</title>
     <link rel="stylesheet" type="text/css" href=${pageContext.request.contextPath}/CSS/Person.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/ChangeMymessage.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/ChangeMyMessage.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Menu.css">
 </head>
 <body>
@@ -18,23 +18,25 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="../../html/Person.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="../../html/find.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="../../html/Add.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
-        <li><a href="../../html/lose.html" target="_self">
-            <div class="font_style">挂失信息</div>
-        </a></li>
+        <li>
+            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+                <div class="font_style">挂失信息</div>
+            </a>
+        </li>
     </ul>
 </div>
 <div id="big" style="text-align:center">

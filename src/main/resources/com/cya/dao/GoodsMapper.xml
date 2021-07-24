@@ -6,22 +6,22 @@
 <mapper namespace="com.cya.dao.GoodsMapper">
     <insert id="addGoods" parameterType="goods">
         insert into lostandfound.goods (goods_Id , pic, descs, times, place, user_Id, release_Time, label, type_Table)
-        values (#{goods_Id}, #{pic}, #{descs}, #{times}, #{place}, #{user_Id}, #{release_Time}, #{label}, #{type_Table})
+        values (#{goodsId}, #{pic}, #{descs}, #{times}, #{place}, #{userId}, #{releaseTime}, #{label}, #{typeTable})
     </insert>
 
     <delete id="deleteGoods" parameterType="int">
-        delete from lostandfound.goods where goods_Id = #{goods_ID}
+        delete from lostandfound.goods where goods_Id = #{goodsID}
     </delete>
 
     <update id="updateGoods" parameterType="goods">
         update lostandfound.goods
         set pic=#{pic}, descs=#{descs}, times=#{times},place=#{place},
-            user_Id=#{user_Id},label=#{label}
-        where goods_Id = #{goods_Id}
+            user_Id=#{userId},label=#{label}
+        where goods_Id = #{goodsId}
     </update>
 
-    <select id="queryAllGoods" resultType="goods">
-        select * from lostandfound.goods;
+    <select id="queryTypeGoods" parameterType="string" resultType="goods">
+        select * from lostandfound.goods where goods.type_Table = #{typeTable};
     </select>
 
     <select id="queryFuzzyGoods" parameterType="string" resultType="goods">

@@ -10,6 +10,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Goods {
+
     String goodsId;
     String pic;
     String descs;

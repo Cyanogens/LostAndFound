@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Cyanogen
@@ -17,53 +18,57 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="../../html/Person.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="../../html/find.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="../../html/Add.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
-        <li><a href="../../html/lose.html" target="_self">
-            <div class="font_style">挂失信息</div>
-        </a></li>
+        <li>
+            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+                <div class="font_style">挂失信息</div>
+            </a>
+        </li>
     </ul>
 </div>
-<!--搜索框-->
 
-<form class="top">
+<!--搜索框-->
+<form class="top" action="${pageContext.request.contextPath}/LostAndFound/Losing">
     <div class="find">
             <span>
-                <input class="search" type="text" placeholder="寻物启事">
+                <input class="search" type="text" placeholder="失物招领">
             </span>
-        <input class="bt" type="image" src="../img/search.png" onClick="document.formName.submit()">
+        <input class="bt" type="image" src="${pageContext.request.contextPath}/image/search.png" onClick="document.formName.submit()">
     </div>
 </form>
 <!--主体-->
 <div id="Body">
     <div class="masonry">
-        <c:forEach items="${imgList}" var="other">
-            <c:if test="${other != null and other != '' }">
-                <div class="item">
-                    <a href=""><img id="pic" src="${other}"/></a>
-                    <div class="resume">
-                        标签及简述
-                    </div>
+        <c:forEach var="goods" items="${requestScope.get('list')}">
+            <%--            <c:if test="${goods != null and goods != '' }">--%>
+            <div class="item">
+                <a href="">
+                        ${goods.getPic()}
+                </a>
+                <div class="resume">
+                        ${goods.getDescs()}
                 </div>
-            </c:if>
+            </div>
+            <%--            </c:if>--%>
         </c:forEach>
     </div>
 </div>
 <!--返回顶部按钮-->
 <div class="back_top">
-    <a onclick="pageScroll()"><img class="back_top_button" src="../img/backToTop.png"></a>
+    <a onclick="pageScroll()"><img class="back_top_button" src="${pageContext.request.contextPath}/image/backToTop.png"></a>
 </div>
 
 <!--背景-->

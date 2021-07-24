@@ -17,7 +17,7 @@ public interface GoodsMapper {
 
     //查
     Goods queryGoods(int goodsId);
-    List<Goods> queryAllGoods();
+    List<Goods> queryTypeGoods(String type);
 
     List<Goods> queryFuzzyGoods(String str, String label);
 

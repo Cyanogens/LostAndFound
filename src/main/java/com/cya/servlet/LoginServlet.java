@@ -18,16 +18,22 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        String user_Xh = req.getParameter("user_Xh");         //登录界面user_Xh属性
-        String password = req.getParameter("password");         //登录界面 password属性
-        String verifyCode = req.getParameter("verifyCode");     //登录界面验证码name
+        //登录界面user_Xh属性
+        String user_Xh = req.getParameter("user_Xh");
+        //登录界面 password属性
+        String password = req.getParameter("password");
+        //登录界面验证码name
+        String verifyCode = req.getParameter("verifyCode");
+
         req.getSession().setAttribute("user_Xh",user_Xh);
         req.getSession().setAttribute("password",password);
+
         String svc =(String) req.getSession().getAttribute("sessionVerify");
         HttpSession session = req.getSession();
         if(!svc.equalsIgnoreCase(verifyCode)){
-            out.print("<script language='javascript' charset='utf-8'>alert('wrong verifycode,please try it again!!');</script>");
-            resp.sendRedirect("/login.html");
+            out.print("<script language='javascript' " +
+                    "charset='utf-8'>alert('wrong VerifyCode,please try it again!!');" +
+                    "window.location.href='http://localhost:8080/web/';</script>");
             return;
         }
         User user = null;
@@ -50,16 +56,18 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("user",user);
             System.out.println(user_Id);
             System.out.println("login success");
-            resp.sendRedirect("http://localhost:8080/LostAndFound_war_exploded/LostAndFound/toPerson");//主页面
+            resp.sendRedirect("http://localhost:8080/web/LostAndFound/toPerson");//主页面
         }else if (user == null) {
             System.out.println(user);
             System.out.println("login failed");
-            out.print("<script language='javascript' charset='utf-8'>alert('wrong account or password,please try it again!!');window.location.href='http://localhost:8080/LostAndFound_war_exploded/login.html';</script>");
+            out.print("<script language='javascript' " +
+                    "charset='utf-8'>alert('wrong account or password,please try it again!!');" +
+                    "window.location.href='http://localhost:8080/web/';</script>");
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("login.html");
+        doPost(req,resp);
     }
 }

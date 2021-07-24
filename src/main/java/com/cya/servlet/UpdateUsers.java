@@ -29,7 +29,7 @@ public class UpdateUsers extends LoginServlet {
         req.setAttribute("sex",user.getSex());
         req.setAttribute("address",user.getAddress());
         req.setAttribute("telephone",user.getTelephone());
-        req.getRequestDispatcher("/webPages/changeMymessage.jsp").forward(req,resp);
+        req.getRequestDispatcher("/webPages/ChangeMyMessage.jsp").forward(req,resp);
     }
 
     @Override

@@ -17,7 +17,7 @@ public interface GoodsService {
 
     //查
     Goods queryGoods(int lostId);
-    List<Goods> queryAllGoods();
+    List<Goods> queryTypeGoods(String str);
     List<Goods> queryFuzzyGoods(String str,String label);
 
 }

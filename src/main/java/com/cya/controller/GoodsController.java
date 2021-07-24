@@ -3,6 +3,7 @@ package com.cya.controller;
 import com.cya.pojo.Goods;
 import com.cya.service.GoodsServiceImpl;
 import com.cya.utils.AddPic;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,38 +22,59 @@ public class GoodsController {
     @Qualifier("goodsServiceImpl")
     private GoodsServiceImpl goodsService;
 
-    //登录
+    //跳转到个人信息页
     @RequestMapping("/toPerson")
-    public String login(){
+    public String toPerson(){
         return "Person";
     }
 
-//    //展示所有物品
-//    @RequestMapping("/main")
-//    public String allGoods(Model model){
-//        List<Goods> goods = goodsService.queryAllGoods();
-//        model.addAttribute("list", goods);
-//        return "";
-//    }
+    //跳转到Find页面
+    @RequestMapping("/toFind")
+    public String toFind(Model model){
+        List<Goods> findList = goodsService.queryTypeGoods("寻物启事");
+        model.addAttribute("list",findList);
+        findList.forEach(System.out::println);
+        return "Find";
+    }
 
-    //跳转到添加页面
+    //跳转到Lose页面
+    @RequestMapping("/toLose")
+    public String toLose(){
+        return "Lose";
+    }
+
+    //跳转到发布页面
     @RequestMapping("/toAdd")
-    public String addGoods(){
+    public String toAdd(){
         return "Add";
     }
+
 
     //进行添加操作
     @RequestMapping("/adding")
     //直接取发文者的userId
     public String addingGoods(Goods goods, MultipartFile file, HttpServletRequest request){
+
         String type = request.getParameter("type");
         goods.setTypeTable(type);
         String label = request.getParameter("label");
-        goods.setTypeTable(label);
+        goods.setLabel(label);
+
+        String user_id = (String) request.getSession().getAttribute("user_Id");
+        goods.setUserId(user_id);
         Goods goodses = AddPic.addPic(file, goods);
+
         goodsService.addGoods(goodses);
+        System.out.println(type);
+        System.out.println(label);
+
+        if (type.equals("寻物启事"))
+            return "redirect:/LostAndFound/toFind";
+        else if (type.equals("失物招领"))
+            return  "redirect:/LostAndFound/toLose";
+
         //重定向可防止刷新提交?
-        return "redirect:/All.html";
+        return "Add";
     }
 
     //跳到更新页面
@@ -61,6 +83,20 @@ public class GoodsController {
         Goods goods = goodsService.queryGoods(id);
         model.addAttribute("getGoods", goods);
         return "";
+    }
+
+
+    @RequestMapping("/Finding")
+    public String Finding(Model model){
+        List<Goods> findList = goodsService.queryTypeGoods("寻物启事");
+        model.addAttribute("list",findList);
+        return "Find";
+    }
+    @RequestMapping("/Losing")
+    public String Losing(Model model){
+        List<Goods> loseList = goodsService.queryTypeGoods("失物招领");
+        model.addAttribute("list",loseList);
+        return "Lose";
     }
 
     //进行更新操作
@@ -75,11 +111,6 @@ public class GoodsController {
         return "redirect:/Person";
     }
 
-    //跳到挂失信息页面
-    @RequestMapping("toFind")
-    public String toFindLost(){
-        return "All";
-    }
 
 //    //删除
 //    //通过goodsId删除

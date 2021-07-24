@@ -18,50 +18,51 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="../../html/Person.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="../../html/find.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/LostAndFound_war_exploded/LostAndFound/toAdd" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
-        <li><a href="../../html/lose.html" target="_self">
-            <div class="font_style">挂失信息</div>
-        </a></li>
+        <li>
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
+                <div class="font_style">挂失信息</div>
+            </a>
+        </li>
     </ul>
 </div>
-<form action="${pageContext.request.contextPath}" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/LostAndFound/adding" method="post" enctype="multipart/form-data">
     <div>
-        <select class="background input" style="text-align: center" required>
+        <select class="background input" name="type" style="text-align: center" required>
             <option>寻物启事</option>
             <option>失物招领</option>
         </select>
     </div>
     <div>
-        <select class="background input" style="text-align: center" required>
+        <select class="background input" name="label" style="text-align: center" required>
             <option>其他</option>
             <option>数码</option>
             <option>耳机</option>
             <option>雨伞</option>
             <option>衣物</option>
             <option>背包</option>
-
         </select>
     </div>
-    <div><input class="input background" type="date" placeholder="日期" required></div>
-    <div><input class="input background" type="text" placeholder="地点" required></div>
-    <div><input class="input background" type="text" placeholder="联系电话" required></div>
-    <textarea class="detail background" placeholder="详情"></textarea>
+    <div><input class="input background" name="times" type="date" placeholder="日期" required></div>
+    <div><input class="input background" name="place" type="text" placeholder="地点" required></div>
+<%--    <div><input class="input background" name="" type="text" placeholder="联系电话" required></div>--%>
+    <textarea class="detail background" name="descs" placeholder="详情"></textarea>
     <div id="preview"></div>
     <div class="button">
-        <input  class="file" type="file" onchange="preview(this)">
+        <input  class="file" name="file" type="file" onchange="preview(this)">
         <div class="file_btn">上传照片</div>
     </div>
     <div class="button">

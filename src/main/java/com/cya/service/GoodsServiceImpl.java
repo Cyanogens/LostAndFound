@@ -3,6 +3,7 @@ package com.cya.service;
 
 import com.cya.dao.GoodsMapper;
 import com.cya.pojo.Goods;
+import com.cya.utils.Times;
 import com.cya.utils.Uuid;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int addGoods(Goods goods) {
         goods.setGoodsId(Uuid.uuid());
+        goods.setTimes(Times.getTime());
         return goodsMapper.addGoods(goods);
     }
 
@@ -37,8 +39,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> queryAllGoods() {
-        return goodsMapper.queryAllGoods();
+    public List<Goods> queryTypeGoods(String str) {
+        return goodsMapper.queryTypeGoods(str);
     }
 
     @Override

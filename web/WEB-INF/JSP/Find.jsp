@@ -17,53 +17,59 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="../../html/Person.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="../../html/find.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="../../html/Add.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
-        <li><a href="../../html/lose.html" target="_self">
-            <div class="font_style">挂失信息</div>
-        </a></li>
+        <li>
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
+                <div class="font_style">挂失信息</div>
+            </a>
+        </li>
     </ul>
 </div>
 
 <!--搜索框-->
-<form class="top">
+<form class="top" action="${pageContext.request.contextPath}/LostAndFound/Finding">
     <div class="find">
             <span>
-                <input class="search" type="text" placeholder="失物招领">
+                <input class="search" type="text" placeholder="寻物启事">
             </span>
-        <input class="bt" type="image" src="../img/search.png" onClick="document.formName.submit()">
+        <input class="bt" type="image" src="${pageContext.request.contextPath}/image/search.png" onClick="document.formName.submit()">
     </div>
 </form>
 <!--主体-->
 <div id="Body">
     <div class="masonry">
-        <c:forEach items="${imgList}" var="other">
-            <c:if test="${other != null and other != '' }">
+        <c:forEach var="goods" items="${requestScope.get('list')}">
+<%--            <c:if test="${goods != null and goods != '' }">--%>
                 <div class="item">
-                    <a href=""><img id="pic" src="${other}"/></a>
+                    <a href="">
+                        ${goods.getPic()}
+                    </a>
                     <div class="resume">
-                        标签及简述
+                        ${goods.getDescs()}
                     </div>
                 </div>
-            </c:if>
+<%--            </c:if>--%>
         </c:forEach>
     </div>
 </div>
 <!--返回顶部按钮-->
 <div class="back_top">
-    <a onclick="pageScroll()"><img class="back_top_button" src="../img/backToTop.png"></a>
+    <a onclick="pageScroll()">
+        <img class="back_top_button" src="${pageContext.request.contextPath}/image/backToTop.png">
+    </a>
 </div>
 <!--背景-->
 <script>
@@ -173,17 +179,17 @@
     function pageScroll() {
         window.scrollBy(0, -100);
         scrolldelay = setTimeout('pageScroll()', 100);
-        var sTop = document.documentElement.scrollTop + document.body.scrollTop;
-        if (sTop == 0) clearTimeout(scrolldelay);
+        const sTop = document.documentElement.scrollTop + document.body.scrollTop;
+        if (sTop === 0) clearTimeout(scrolldelay);
     }
 
     /*瀑布*/
     function aa() {
-        var oMain = document.getElementById('main');
-        var ITEM_WIDTH = 200;
-        var ITEM_SPACE = 10;
-        var itemArray = [];
-        var itemHeight = [];
+        const oMain = document.getElementById('main');
+        const ITEM_WIDTH = 200;
+        const ITEM_SPACE = 10;
+        const itemArray = [];
+        let itemHeight = [];
 
         // 求随机数
         function rand(min, max) {
@@ -192,8 +198,8 @@
 
 
         function createItem(min, max) {
-            for (var i = min; i < max; i++) {
-                var div = document.createElement('div');
+            for (let i = min; i < max; i++) {
+                const div = document.createElement('div');
                 div.style.borderRadius = '30px';
                 div.style.border = '1px solid green';
                 div.style.height = '300px';
@@ -209,13 +215,13 @@
 
         //div的布局
         function layout() {
-            var t = 0;
-            var l = 0;
-            var frist = true;
-            var mainWidth = 0;
-            var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+            const t = 0;
+            let l = 0;
+            let frist = true;
+            let mainWidth = 0;
+            const winWidth = document.documentElement.clientWidth || document.body.clientWidth;
 
-            for (var i = 0; i < itemArray.length; i++) {
+            for (let i = 0; i < itemArray.length; i++) {
                 if ((l + ITEM_WIDTH) >= winWidth) {
                     frist = false;
                     mainWidth = l;
@@ -226,9 +232,9 @@
                     itemArray[i].style.left = l + 'px';
                     itemHeight[i] = itemArray[i].offsetHeight;
                 } else {
-                    var min = getMin(itemHeight);
-                    for (var j = 0; j < itemHeight.length; j++) {
-                        if (itemHeight[j] == min) {
+                    const min = getMin(itemHeight);
+                    for (let j = 0; j < itemHeight.length; j++) {
+                        if (itemHeight[j] === min) {
                             itemArray[i].style.top = min + ITEM_SPACE + 'px';
                             itemArray[i].style.left = j * (ITEM_WIDTH + ITEM_SPACE) + 'px';
                             itemHeight[j] += (itemArray[i].offsetHeight + ITEM_SPACE);
@@ -248,8 +254,8 @@
 
         //求最小值
         function getMin(aArray) {
-            var min = aArray[0];
-            for (var i = 0; i < aArray.length; i++) {
+            let min = aArray[0];
+            for (let i = 0; i < aArray.length; i++) {
                 if (min > aArray[i]) {
                     min = aArray[i];
                 }

@@ -17,23 +17,25 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="../../html/Person.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="../../html/find.html" target="_self">
+            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="../../html/Add.html" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
-        <li><a href="../../html/lose.html" target="_self">
-            <div class="font_style">挂失信息</div>
-        </a></li>
+        <li>
+            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+                <div class="font_style">挂失信息</div>
+            </a>
+        </li>
     </ul>
 </div>
 <div id="big" style="text-align:center">
@@ -102,7 +104,7 @@
             </br>
             </br>
             <div class = "changeMessage">
-                <a href="changeMymessage.html" style="text-decoration: none">编辑资料</a>
+                <a href="" style="text-decoration: none">编辑资料</a>
             </div>
 
         </div>
@@ -112,24 +114,24 @@
                 <ul id="right_ul">
                     <li class="right_li">
                         <tbody>
-                        <c:forEach var="book" items="${requestScope.get('list')}">
+                        <c:forEach var="goods" items="${requestScope.get('list')}">
                             <tr>
-                                <td>${book.getBookID()}</td>
-                                <td>${book.getBookName()}</td>
-                                <td>${book.getBookCounts()}</td>
-                                <td>${book.getDetail()}</td>
+                                <td>${goods.getGoodsID()}</td>
+                                <td>${goods.getGoodsName()}</td>
+                                <td>${goods.getGoodsCounts()}</td>
+                                <td>${goods.getDetail()}</td>
                                 <td>
-                                    <c:if test="${book.pic !=null }">
-                                        <img id="pic" alt="" src="/pic/${book.getPic() }">
+                                    <c:if test="${goods.pic !=null }">
+                                        <img id="pic" alt="" src="/pic/${goods.getPic() }">
                                     </c:if>
                                 </td>
-                                <c:if test="${book.getBookID() != null}">
+                                <c:if test="${goods.getBookID() != null}">
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/book/updateBook?id=${book.getBookID()}">修改</a> |
-                                        <a href="${pageContext.request.contextPath}/book/deleteBook?id=${book.getBookID()}">删除</a>
+                                        <a href="${pageContext.request.contextPath}/book/updateBook?id=${goods.getBookID()}">修改</a> |
+                                        <a href="${pageContext.request.contextPath}/book/deleteBook?id=${goods.getBookID()}">删除</a>
                                     </td>
                                 </c:if>
-                                <c:if test="${book.getBookID() == null}">
+                                <c:if test="${goods.getBookID() == null}">
                                     <p>未发布过内容</p>
                                 </c:if>
                             </tr>
