@@ -12,10 +12,21 @@ html{
     float: none;
     background-color: rgba(255, 255, 255, 0);
 }
+.selection{
+    width: 140px;
+    height: 62px;
+    background-color: #ffffff;
+    border: 1px solid #a6b3b2;
+    border-radius: 30px 0 0 30px;
+    border-right: none;
+    outline: none;
+    font-size: 20px;
+
+}
 .find{
     position: relative;
     padding: 0;
-    margin-left: 200px;
+    margin-left: 20px;
     display: flex;
     justify-content: center;
 }
@@ -23,23 +34,23 @@ span{
     float: left;
 }
 .search{
+    padding: 0;
     width: 440px;
-    height: 60px;
+    height: 62px;
     background-color: #ffffff;
     border: 1px solid #a6b3b2;
     border-right: none;
-    border-radius: 30px 0 0 30px;
+    border-left: none;
+    border-radius:0;
     outline: none;
     font-size: 20px;
 }
-.search:hover{
+.search:focus,.selection:focus{
     border-color: #787878;
-
-    font-size: 25px;
 }
 .bt{
     width: 60px;
-    height: 62px;
+    height: 60px;
     background-color: #93f1cc;
     border: 1px solid #a6b3b2;
     border-left: none;

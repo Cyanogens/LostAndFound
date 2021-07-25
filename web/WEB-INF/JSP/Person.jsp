@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Cyanogen
@@ -17,12 +18,12 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
@@ -32,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>
@@ -100,11 +101,11 @@
                     </div>
                 </div>
             </div>
-            </br>
-            </br>
-            </br>
+            <br>
+            <br>
+            <br>
             <div class = "changeMessage">
-                <a href="" style="text-decoration: none">编辑资料</a>
+                <a href="${pageContext.request.contextPath}" style="text-decoration: none">编辑资料</a>
             </div>
 
         </div>
@@ -114,28 +115,28 @@
                 <ul id="right_ul">
                     <li class="right_li">
                         <tbody>
-                        <c:forEach var="goods" items="${requestScope.get('list')}">
-                            <tr>
-                                <td>${goods.getGoodsID()}</td>
-                                <td>${goods.getGoodsName()}</td>
-                                <td>${goods.getGoodsCounts()}</td>
-                                <td>${goods.getDetail()}</td>
-                                <td>
-                                    <c:if test="${goods.pic !=null }">
-                                        <img id="pic" alt="" src="/pic/${goods.getPic() }">
-                                    </c:if>
-                                </td>
-                                <c:if test="${goods.getBookID() != null}">
+                            <c:forEach var="goods" items="${requestScope.get('myList')}">
+                                <tr>
+<%--                                    <td>${goods.getGoodsID()}</td>--%>
+<%--                                    <td>${goods.getGoodsName()}</td>--%>
+                                    <td>${goods.getDescs()}</td>
+<%--                                    <td>--%>
+<%--                                        <c:if test="${goods.pic !=null }">--%>
+<%--                                            <img id="pic" alt="" src="/pic/${goods.getPic() }">--%>
+<%--                                        </c:if>--%>
+<%--                                    </td>--%>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/book/updateBook?id=${goods.getBookID()}">修改</a> |
-                                        <a href="${pageContext.request.contextPath}/book/deleteBook?id=${goods.getBookID()}">删除</a>
-                                    </td>
-                                </c:if>
-                                <c:if test="${goods.getBookID() == null}">
-                                    <p>未发布过内容</p>
-                                </c:if>
-                            </tr>
-                        </c:forEach>
+                                        <c:if test="${goods.getGoodsId() != null}">
+                                            <a href="${pageContext.request.contextPath}/LostAndFound/toGoodsDetail?id=${goods.getGoodsId()}">查看</a> |
+                                            <a href="${pageContext.request.contextPath}/LostAndFound/toUpdate?id=${goods.getGoodsId()}">修改</a> |
+                                            <a href="${pageContext.request.contextPath}/LostAndFound/deleting?id=${goods.getGoodsId()}">删除</a>
+                                        </c:if>
+                                    </td><br>
+                                    <c:if test="${goods.getGoodsId() == null}">
+                                        <p>未发布过内容</p>
+                                    </c:if>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </li>
                 </ul>

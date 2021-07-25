@@ -5,11 +5,36 @@
   Time: 16:31
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <title>招失网</title>
     <link rel="stylesheet" type="text/css" href="Login.css">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="description" content="This is my page">
+    <script type="text/javascript">
+        var img
+        window.onload =function(){
+            img = document.getElementById("img");
+            img.onclick = _change();
+        }
+
+        function _change(){
+            /*
+            1.得到img元素
+            2.修改其src为/day09-1/VerifyCodeServlet
+            */
+            var date = new Date().getTime();
+            img.src = "${pageContext.request.contextPath}/VerifyCodeServlet?a=" + date;
+        }
+    </script>
 </head>
 <body>
 
@@ -27,7 +52,9 @@
             <input type="text" name="user_Xh" maxlength="10" placeholder="学号" required>
             <input type="password" name="password" placeholder="密码" required>
             <input id="verifyCode" name="verifyCode" placeholder="验证码" required>
-            <img src="VerifyCodeServlet" id="verify" onclick="document.getElementById('verify').src='VerifyCodeServlet?'+Math.random();">
+            <a href="javascript:void (0)" onclick="_change()">
+                <img src="VerifyCodeServlet" id="img" onclick="document.getElementById('verify').src='VerifyCodeServlet?'+Math.random();">
+            </a>
             <input type="submit" class="btn" value="登 录">
         </form>
 
@@ -92,7 +119,7 @@
             // 兼容FF和IE和Opera
             var theEvent = e || window.event;
             var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-            if (code == 13) {
+            if (code === 13) {
                 $('#submit').click();//具体处理函数
                 return false;
             }

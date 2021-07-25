@@ -5,7 +5,7 @@ body{
     margin: 0;
 }
 #verifyCode{
-    background-color: #e2faeb;
+    background-color: #ffffff;
     width: 160px;
     height: 48px;
     border-radius: 8px;
@@ -95,7 +95,7 @@ h1{
 }
 
 input{
-    background-color: #e2faeb;
+    background-color: #ffffff;
     width: 70%;
     height: 48px;
     border-radius: 8px;

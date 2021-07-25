@@ -9,14 +9,14 @@
         values (#{goodsId}, #{pic}, #{descs}, #{times}, #{place}, #{userId}, #{releaseTime}, #{label}, #{typeTable})
     </insert>
 
-    <delete id="deleteGoods" parameterType="int">
+    <delete id="deleteGoods" parameterType="string">
         delete from lostandfound.goods where goods_Id = #{goodsID}
     </delete>
 
     <update id="updateGoods" parameterType="goods">
         update lostandfound.goods
-        set pic=#{pic}, descs=#{descs}, times=#{times},place=#{place},
-            user_Id=#{userId},label=#{label}
+        set pic=#{pic}, descs=#{descs}, times=#{times},
+            place=#{place},label=#{label},type_Table = #{typeTable}
         where goods_Id = #{goodsId}
     </update>
 
@@ -24,11 +24,22 @@
         select * from lostandfound.goods where goods.type_Table = #{typeTable};
     </select>
 
+    <select id="queryAllGoodsByUserId" parameterType="string" resultType="goods">
+        select * from lostandfound.goods where user_Id = #{userId};
+    </select>
+
+    <select id="queryGoodsByGoodsId" parameterType="string" resultType="goods">
+        select * from lostandfound.goods where goods_Id = #{goodsId};
+    </select>
+
     <select id="queryFuzzyGoods" parameterType="string" resultType="goods">
         select * from lostandfound.goods
         <where>
+            <if test="">
+                and good.type_Table = #{typeTable}
+            </if>
             <if test='label != "请选择"'>
-                and goods.descs = #{label}
+                and goods.label = #{label}
             </if>
 
             <if test='str != "" and str != null'>

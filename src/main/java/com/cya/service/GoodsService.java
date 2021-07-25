@@ -10,7 +10,7 @@ public interface GoodsService {
     int addGoods(Goods goods);
 
     //删
-    int deleteGoods(int goodsId);
+    int deleteGoods(String goodsId);
 
     //改(根据id)
     int updateGoods(Goods goods);
@@ -18,6 +18,7 @@ public interface GoodsService {
     //查
     Goods queryGoods(int lostId);
     List<Goods> queryTypeGoods(String str);
-    List<Goods> queryFuzzyGoods(String str,String label);
-
+    List<Goods> queryFuzzyGoods(String str,String label, String typeTable);
+    List<Goods> queryAllGoodsByUserId(String userId);
+    Goods queryGoodsByGoodsId(String goodsId);
 }

@@ -63,8 +63,8 @@
                         </ul>
                     </div>
                 </div>
-                </br>
-                </br>
+                <br>
+                <br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">姓名</div>
@@ -75,8 +75,8 @@
                         </ul>
                     </div>
                 </div>
-                </br>
-                </br>
+                <br>
+                <br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">联系电话</div>
@@ -87,8 +87,8 @@
                         </ul>
                     </div>
                 </div>
-                </br>
-                </br>
+                <br>
+                <br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">联系地址</div>
@@ -100,11 +100,11 @@
                     </div>
                 </div>
             </div>
-            </br>
-            </br>
-            </br>
+            <br>
+            <br>
+            <br>
             <div class = "changeMessage">
-                <a href="../../html/ChangeMymessage.html" style="text-decoration: none">编辑资料</a>
+                <a href="${pageContext.request.contextPath}/updateUsers" style="text-decoration: none">编辑资料</a>
             </div>
 
         </div>

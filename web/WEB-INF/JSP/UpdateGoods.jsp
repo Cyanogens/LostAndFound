@@ -1,15 +1,14 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Cyanogen
-  Date: 2021/7/24
-  Time: 16:38
+  Date: 2021/7/25
+  Time: 11:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <title>添加</title>
+    <title>更改</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Add.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Menu.css">
 </head>
@@ -38,7 +37,7 @@
         </li>
     </ul>
 </div>
-<form action="${pageContext.request.contextPath}/LostAndFound/adding" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/LostAndFound/updatingGoods" method="post" enctype="multipart/form-data">
     <div>
         <select class="background input" name="type" style="text-align: center" required>
             <option>寻物启事</option>
@@ -55,13 +54,12 @@
             <option>背包</option>
         </select>
     </div>
-    <div><input class="input background" name="times" type="date" placeholder="日期" required></div>
-    <div><input class="input background" name="place" type="text" placeholder="地点" required></div>
-<%--    <div><input class="input background" name="" type="text" placeholder="联系电话" required></div>--%>
-    <div><textarea class="detail background" name="descs" placeholder="详情"></textarea></div>
+    <div><input class="input background" name="times" type="date" placeholder="日期" required value="${goods.times}"></div>
+    <div><input class="input background" name="place" type="text" placeholder="地点" required value="${goods.place}"></div>
+    <div><textarea class="detail background" name="descs" id="descs" placeholder="详情" required>${goods.descs}</textarea></div>
     <div id="preview"></div>
     <div class="button">
-        <input  class="file" name="file" type="file" onchange="preview(this)">
+        <input  class="file" name="file" type="file" onchange="preview(this)" required>
         <div class="file_btn">上传照片</div>
     </div>
     <div class="button">
@@ -70,6 +68,9 @@
     </div>
 </form>
 <script>
+    function changeText(){
+        document.getElementById("descs").value=document.getElementById("descs1").value;
+    }
     /*背景*/
     !function(){
 

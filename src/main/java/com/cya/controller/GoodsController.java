@@ -24,7 +24,10 @@ public class GoodsController {
 
     //跳转到个人信息页
     @RequestMapping("/toPerson")
-    public String toPerson(){
+    public String toPerson(Model model, HttpServletRequest request){
+        String user_id = (String) request.getSession().getAttribute("user_Id");
+        List<Goods> myGoods = goodsService.queryAllGoodsByUserId(user_id);
+        model.addAttribute("myList", myGoods);
         return "Person";
     }
 
@@ -33,7 +36,6 @@ public class GoodsController {
     public String toFind(Model model){
         List<Goods> findList = goodsService.queryTypeGoods("寻物启事");
         model.addAttribute("list",findList);
-        findList.forEach(System.out::println);
         return "Find";
     }
 
@@ -50,11 +52,28 @@ public class GoodsController {
     }
 
 
+    //跳到物品详情页
+    @RequestMapping("/toGoodsDetail")
+    public String toGoodsDetail(Model model, String id){
+        Goods goods = goodsService.queryGoodsByGoodsId(id);
+        model.addAttribute("goods", goods);
+        return "DetailMessage";
+    }
+
+
+    @RequestMapping("/toUpdate")
+    //跳转到物品更新页面
+    public String toUpdate(Model model,String id){
+        Goods goods = goodsService.queryGoodsByGoodsId(id);
+        model.addAttribute("goods", goods);
+        return "UpdateGoods";
+    }
+
+
     //进行添加操作
     @RequestMapping("/adding")
     //直接取发文者的userId
     public String addingGoods(Goods goods, MultipartFile file, HttpServletRequest request){
-
         String type = request.getParameter("type");
         goods.setTypeTable(type);
         String label = request.getParameter("label");
@@ -65,33 +84,22 @@ public class GoodsController {
         Goods goodses = AddPic.addPic(file, goods);
 
         goodsService.addGoods(goodses);
-        System.out.println(type);
-        System.out.println(label);
-
         if (type.equals("寻物启事"))
             return "redirect:/LostAndFound/toFind";
-        else if (type.equals("失物招领"))
+        else
             return  "redirect:/LostAndFound/toLose";
-
-        //重定向可防止刷新提交?
-        return "Add";
-    }
-
-    //跳到更新页面
-    @RequestMapping("/toUpdate")
-    public String updateGoods(int id, Model model){
-        Goods goods = goodsService.queryGoods(id);
-        model.addAttribute("getGoods", goods);
-        return "";
     }
 
 
+    //寻物启事页
     @RequestMapping("/Finding")
     public String Finding(Model model){
         List<Goods> findList = goodsService.queryTypeGoods("寻物启事");
         model.addAttribute("list",findList);
         return "Find";
     }
+
+    //失物招领页
     @RequestMapping("/Losing")
     public String Losing(Model model){
         List<Goods> loseList = goodsService.queryTypeGoods("失物招领");
@@ -99,8 +107,8 @@ public class GoodsController {
         return "Lose";
     }
 
-    //进行更新操作
-    @RequestMapping("/updating")
+    //进行物品更新操作
+    @RequestMapping("/updatingGoods")
     public String updatingGoods(Goods goods, MultipartFile file, HttpServletRequest request){
         String type = request.getParameter("type");
         goods.setTypeTable(type);
@@ -108,24 +116,29 @@ public class GoodsController {
         goods.setTypeTable(label);
         Goods goodses = AddPic.addPic(file, goods);
         goodsService.updateGoods(goodses);
-        return "redirect:/Person";
+        return "redirect:/LostAndFound/toPerson";
     }
 
 
-//    //删除
-//    //通过goodsId删除
-//    @RequestMapping("/delete")
-//    public String deleteGoods(int id){
-//        goodsService.deleteGoods(id);
-//        return "Person";
-//    }
+    //删除
+    //通过goodsId删除
+    @RequestMapping("/deleting")
+    public String deleteGoods(String id){
+        goodsService.deleteGoods(id);
+        return "redirect:/LostAndFound/toPerson";
+    }
 
     //模糊查询
     @RequestMapping()
     public String queryFuzzy(String str, Model model, HttpServletRequest request){
         String label = request.getParameter("label");
-        List<Goods> goods = goodsService.queryFuzzyGoods(str,label);
-        model.addAttribute("",goods);
-        return "";
+        String type = request.getParameter("type");
+        List<Goods> goods = goodsService.queryFuzzyGoods(str,label,type);
+        model.addAttribute("goodsList",goods);
+
+        if (type.equals("寻物启事"))
+            return "redirect:/LostAndFound/toFind";
+        else
+            return "redirect:/LostAndFound/toLose";
     }
 }

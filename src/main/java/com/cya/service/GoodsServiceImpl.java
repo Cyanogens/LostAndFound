@@ -24,7 +24,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public int deleteGoods(int goodsId) {
+    public int deleteGoods(String goodsId) {
         return goodsMapper.deleteGoods(goodsId);
     }
 
@@ -44,8 +44,19 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> queryFuzzyGoods(String str, String label) {
+    public List<Goods> queryFuzzyGoods(String str, String label,String typeTable) {
         str = "%" + str + "%";
-        return goodsMapper.queryFuzzyGoods(str,label);
+        return goodsMapper.queryFuzzyGoods(str,label,typeTable);
     }
+
+    @Override
+    public List<Goods> queryAllGoodsByUserId(String userId) {
+        return goodsMapper.queryAllGoodsByUserId(userId);
+    }
+
+    @Override
+    public Goods queryGoodsByGoodsId(String goodsId) {
+        return goodsMapper.queryGoodsByGoodsId(goodsId);
+    }
+
 }

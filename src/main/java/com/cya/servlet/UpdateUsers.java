@@ -63,7 +63,7 @@ public class UpdateUsers extends LoginServlet {
             session.setAttribute("address",user.getAddress());
             System.out.println("updata success");
             out.print("<script language='javascript' charset='utf-8'>alert('updata success!!');</script>");
-            resp.sendRedirect("/webPages/myArea.jsp");
+            resp.sendRedirect("http://localhost:8080/web/LostAndFound/toPerson");
         }else{
             System.out.println("updata fail");
             out.print("<script language='javascript' charset='utf-8'>alert('updata fail!!');</script>");

@@ -10,7 +10,7 @@ public interface GoodsMapper {
     int addGoods(Goods goods);
 
     //删
-    int deleteGoods(int goodsId);
+    int deleteGoods(String goodsId);
 
     //改(根据id)
     int updateGoods(Goods goods);
@@ -18,7 +18,8 @@ public interface GoodsMapper {
     //查
     Goods queryGoods(int goodsId);
     List<Goods> queryTypeGoods(String type);
-
-    List<Goods> queryFuzzyGoods(String str, String label);
+    List<Goods> queryAllGoodsByUserId(String userId);
+    List<Goods> queryFuzzyGoods(String str, String label,String typeTable);
+    Goods queryGoodsByGoodsId(String goodsId);
 
 }

@@ -41,13 +41,21 @@
 </div>
 
 <!--搜索框-->
-<form class="top" action="${pageContext.request.contextPath}/LostAndFound/Losing">
-    <div class="find">
+<!--搜索框-->
+<form class="top find">
+    <select class="selection ">
+        <option selected disabled>物品类别</option>
+        <option>数码</option>
+        <option>耳机</option>
+        <option>雨伞</option>
+        <option>衣物</option>
+        <option>背包</option>
+        <option>其他</option>
+        </select>
             <span>
-                <input class="search" type="text" placeholder="失物招领">
+                <input class="search" type="text" placeholder="寻物启事">
             </span>
-        <input class="bt" type="image" src="${pageContext.request.contextPath}/image/search.png" onClick="document.formName.submit()">
-    </div>
+            <input class="bt" type="image" src="../imgarch.png" onClick="document.formName.submit()">
 </form>
 <!--主体-->
 <div id="Body">

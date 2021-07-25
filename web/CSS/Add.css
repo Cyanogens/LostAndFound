@@ -33,10 +33,9 @@ div{
     resize: none;
 }
 
-.input:hover,.contact_input:hover,.detail:hover{
+.input:focus,.contact_input:focus,.detail:focus{
      background-color: white;
      color: #111111;
-     font-size: 20px;
  }
 /*图片浏览*/
 #preview,.img,img {
