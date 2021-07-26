@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
@@ -32,7 +32,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>

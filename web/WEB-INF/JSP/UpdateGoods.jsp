@@ -21,7 +21,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>
@@ -54,6 +54,7 @@
             <option>背包</option>
         </select>
     </div>
+    <input type="hidden" name="goodsId" value="${goods.goodsId}">
     <div><input class="input background" name="times" type="date" placeholder="日期" required value="${goods.times}"></div>
     <div><input class="input background" name="place" type="text" placeholder="地点" required value="${goods.place}"></div>
     <div><textarea class="detail background" name="descs" id="descs" placeholder="详情" required>${goods.descs}</textarea></div>

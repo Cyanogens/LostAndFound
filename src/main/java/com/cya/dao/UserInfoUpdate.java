@@ -10,12 +10,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserInfoUpdate {
-    public User UserInfoUpdate(int user_Id, String username, String sex, String telephone, String user_Xh, String address) throws SQLException {
+    public User userInfoUpdate(String user_Id, String username, String sex, String telephone,
+                               String user_Xh, String address,String password) throws SQLException {
         Connection conn = DBUtil.getConnection();
         Statement stmt = conn.createStatement();
-        String sql = "update lostandfound.user set user_Name = '"+username +"',sex ='"+sex+"',address = '"+address+"',telephone ='"+telephone+"',user_Xh = '"+user_Xh+"' where user_Id = '"+user_Id+"'";
-        //String sql = "update users set sex ='"+sex+"' where user_Xh = '"+user_Xh+"'";
-        //String sql = "update users set user_Name = ?,sex =?,address = ?,telephone =? where user_Xh = ?";
+        String sql = "update lostandfound.user set user_Name = '" + username
+                + "',sex ='" + sex + "',address = '" + address + "',telephone ='"+ telephone
+                + "',user_Xh = '" + user_Xh + "',password = '" + password + "' where user_Id = '" + user_Id + "'";
         int result = stmt.executeUpdate(sql);
         System.out.println(user_Xh);
         System.out.println(result);

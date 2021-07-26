@@ -51,9 +51,9 @@
             <h1>用户登录</h1>
             <input type="text" name="user_Xh" maxlength="10" placeholder="学号" required>
             <input type="password" name="password" placeholder="密码" required>
-            <input id="verifyCode" name="verifyCode" placeholder="验证码" required>
-            <a href="javascript:void (0)" onclick="_change()">
-                <img src="VerifyCodeServlet" id="img" onclick="document.getElementById('verify').src='VerifyCodeServlet?'+Math.random();">
+            <input id="verifyCode" name="verifyCode" maxlength="4" placeholder="验证码" required>
+            <a href="${pageContext.request.contextPath}/VerifyCodeServlet" onclick="_change()">
+                <img src="VerifyCodeServlet" id="image" onclick="document.getElementById('verify').src='VerifyCodeServlet?'+Math.random();">
             </a>
             <input type="submit" class="btn" value="登 录">
         </form>

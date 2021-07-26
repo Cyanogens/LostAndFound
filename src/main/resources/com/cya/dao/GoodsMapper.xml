@@ -17,7 +17,7 @@
         update lostandfound.goods
         set pic=#{pic}, descs=#{descs}, times=#{times},
             place=#{place},label=#{label},type_Table = #{typeTable}
-        where goods_Id = #{goodsId}
+        where goods_Id = #{goodsId} and user_Id = #{userId}
     </update>
 
     <select id="queryTypeGoods" parameterType="string" resultType="goods">
@@ -32,13 +32,13 @@
         select * from lostandfound.goods where goods_Id = #{goodsId};
     </select>
 
-    <select id="queryFuzzyGoods" parameterType="string" resultType="goods">
+    <!--有多个参数时无需parameterType,即使是相同类型-->
+    <select id="queryFuzzyGoods" resultType="goods">
         select * from lostandfound.goods
         <where>
-            <if test="">
-                and good.type_Table = #{typeTable}
-            </if>
-            <if test='label != "请选择"'>
+            and goods.type_Table = #{typeTable}
+
+            <if test='label != "物品类别"'>
                 and goods.label = #{label}
             </if>
 
@@ -47,6 +47,25 @@
             </if>
         </where>
 
+    </select>
+    
+    <resultMap id="map" type="goods">
+        <result property="pic" column="pic"/>
+        <result property="descs" column="descs"/>
+        <result property="times" column="time"/>
+        <result property="place" column="place"/>
+        <result property="label" column="label"/>
+        <result property="typeTable" column="type"/>
+        <association property="user" javaType="User">
+            <result property="user_Name" column="userName"/>
+            <result property="telephone" column="tel"/>
+        </association>
+    </resultMap>
+    
+    <select id="queryGoodsOfUser" resultMap="map" parameterType="goods">
+        select user_Name userName, telephone tel, pic , descs , times time ,place , label, type_Table type
+        from lostandfound.goods, lostandfound.user
+        where goods_Id = #{goodsId} and goods.user_Id = user.user_Id;
     </select>
 
 </mapper>

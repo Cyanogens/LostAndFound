@@ -1,6 +1,5 @@
 h2{
     font-size: 40px;
-    margin-top: 5%;
 }
 #detail{
     margin-left: 30%;
@@ -8,22 +7,25 @@ h2{
     height: 300px;
 }
 #centerPicture img{
+    margin-top: 2%;
+    margin-left: -15%;
     float: left;
-    width: 200px;
-    height: 300px;
+    width: 450px;
+    height: 500px;
     box-shadow:10px 10px 20px rgb(176,217,250);
     display: inline-block;
     overflow: hidden;
 }
 #detailMessage{
+    margin-top: 2%;
+    margin-right: -15%;
     float: right;
     display: inline-block;
     box-shadow:10px 10px 20px rgb(176,217,250);
     background: rgba(172, 105, 105, 0.4);
     border-radius: 15px;
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
+    width: 450px;
+    height: 500px;
 }
 
 

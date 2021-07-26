@@ -18,22 +18,22 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toAdd" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>
@@ -41,36 +41,35 @@
 </div>
 
 <!--搜索框-->
-<!--搜索框-->
-<form class="top find">
-    <select class="selection ">
-        <option selected disabled>物品类别</option>
+<form class="top find" action="${pageContext.request.contextPath}/LostAndFound/fuzzy">
+    <select class="selection" name="label">
+        <option>物品类别</option>
         <option>数码</option>
         <option>耳机</option>
         <option>雨伞</option>
         <option>衣物</option>
         <option>背包</option>
         <option>其他</option>
-        </select>
-            <span>
-                <input class="search" type="text" placeholder="寻物启事">
-            </span>
-            <input class="bt" type="image" src="../imgarch.png" onClick="document.formName.submit()">
+    </select>
+    <span>
+        <input type="hidden" name="type" value="失物招领">
+        <input class="search" name="str" type="text" placeholder="失物招领">
+    </span>
+    <input class="bt" type="image" src="${pageContext.request.contextPath}/image/search.png" onClick="document.formName.submit()">
 </form>
+
 <!--主体-->
 <div id="Body">
     <div class="masonry">
         <c:forEach var="goods" items="${requestScope.get('list')}">
-            <%--            <c:if test="${goods != null and goods != '' }">--%>
             <div class="item">
-                <a href="">
-                        ${goods.getPic()}
-                </a>
-                <div class="resume">
+                <a href="${pageContext.request.contextPath}/LostAndFound/toGoodsDetail?id=${goods.getGoodsId()}">
+                    <img id="pic" alt="" src="/pic/${goods.getPic()}">
+                    <div class="resume">
                         ${goods.getDescs()}
-                </div>
+                    </div>
+                </a>
             </div>
-            <%--            </c:if>--%>
         </c:forEach>
     </div>
 </div>
@@ -188,7 +187,7 @@
         window.scrollBy(0, -100);
         scrolldelay = setTimeout('pageScroll()', 100);
         var sTop = document.documentElement.scrollTop + document.body.scrollTop;
-        if (sTop == 0) clearTimeout(scrolldelay);
+        if (sTop === 0) clearTimeout(scrolldelay);
     }
 
     /*瀑布*/

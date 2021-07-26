@@ -16,7 +16,7 @@ public class LogoutServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         req.getSession().invalidate();
         out.print("<script language='javascript' charset='utf-8'>alert('logout success!!');</script>");
-        resp.sendRedirect("login.jsp");
+        resp.sendRedirect("http://localhost:8080/web/");
     }
 
     @Override

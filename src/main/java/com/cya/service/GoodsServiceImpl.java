@@ -1,6 +1,5 @@
 package com.cya.service;
 
-
 import com.cya.dao.GoodsMapper;
 import com.cya.pojo.Goods;
 import com.cya.utils.Times;
@@ -12,30 +11,26 @@ public class GoodsServiceImpl implements GoodsService {
 
     private GoodsMapper goodsMapper;
 
+    //spring注入
     public void setGoodsMapper(GoodsMapper goodsMapper) {
         this.goodsMapper = goodsMapper;
     }
 
     @Override
-    public int addGoods(Goods goods) {
+    public void addGoods(Goods goods) {
         goods.setGoodsId(Uuid.uuid());
-        goods.setTimes(Times.getTime());
-        return goodsMapper.addGoods(goods);
+        goods.setReleaseTime(Times.getTime());
+        goodsMapper.addGoods(goods);
     }
 
     @Override
-    public int deleteGoods(String goodsId) {
-        return goodsMapper.deleteGoods(goodsId);
+    public void deleteGoods(String goodsId) {
+        goodsMapper.deleteGoods(goodsId);
     }
 
     @Override
-    public int updateGoods(Goods goods) {
-        return goodsMapper.updateGoods(goods);
-    }
-
-    @Override
-    public Goods queryGoods(int goodsId) {
-        return goodsMapper.queryGoods(goodsId);
+    public void updateGoods(Goods goods) {
+        goodsMapper.updateGoods(goods);
     }
 
     @Override
@@ -57,6 +52,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Goods queryGoodsByGoodsId(String goodsId) {
         return goodsMapper.queryGoodsByGoodsId(goodsId);
+    }
+
+    @Override
+    public Goods queryGoodsOfUser(Goods goods) {
+        return goodsMapper.queryGoodsOfUser(goods);
     }
 
 }

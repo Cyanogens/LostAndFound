@@ -23,7 +23,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>
@@ -59,7 +59,7 @@
                         <div class="title">学号</div>
                         <ul class="left_ul">
                             <li class="left_li">
-                                2025121025
+                                ${myself.user_Xh}
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="title">姓名</div>
                         <ul class="left_ul">
                             <li class="left_li">
-                                ×××
+                                ${myself.user_Name}
                             </li>
                         </ul>
                     </div>
@@ -83,19 +83,19 @@
                         <div class="title">联系电话</div>
                         <ul class="left_ul">
                             <li class="left_li">
-                                18588874029
+                                ${myself.telephone}
                             </li>
                         </ul>
                     </div>
                 </div>
-                </br>
-                </br>
+                <br>
+                <br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">联系地址</div>
                         <ul class="left_ul">
                             <li class="left_li">
-                                ..........
+                                ${myself.address}
                             </li>
                         </ul>
                     </div>
@@ -103,11 +103,9 @@
             </div>
             <br>
             <br>
-            <br>
             <div class = "changeMessage">
-                <a href="${pageContext.request.contextPath}" style="text-decoration: none">编辑资料</a>
+                <a href="${pageContext.request.contextPath}/LostAndFound/toUpdateMyself" style="text-decoration: none;">编辑资料</a>
             </div>
-
         </div>
         <div id="right">
             <div id="modified">
@@ -116,32 +114,36 @@
                     <li class="right_li">
                         <tbody>
                             <c:forEach var="goods" items="${requestScope.get('myList')}">
+                                <div class="right_line">
                                 <tr>
-<%--                                    <td>${goods.getGoodsID()}</td>--%>
-<%--                                    <td>${goods.getGoodsName()}</td>--%>
-                                    <td>${goods.getDescs()}</td>
-<%--                                    <td>--%>
-<%--                                        <c:if test="${goods.pic !=null }">--%>
-<%--                                            <img id="pic" alt="" src="/pic/${goods.getPic() }">--%>
-<%--                                        </c:if>--%>
-<%--                                    </td>--%>
-                                    <td>
-                                        <c:if test="${goods.getGoodsId() != null}">
-                                            <a href="${pageContext.request.contextPath}/LostAndFound/toGoodsDetail?id=${goods.getGoodsId()}">查看</a> |
-                                            <a href="${pageContext.request.contextPath}/LostAndFound/toUpdate?id=${goods.getGoodsId()}">修改</a> |
-                                            <a href="${pageContext.request.contextPath}/LostAndFound/deleting?id=${goods.getGoodsId()}">删除</a>
-                                        </c:if>
-                                    </td><br>
-                                    <c:if test="${goods.getGoodsId() == null}">
+
+                                        <td>
+                                            <c:if test="${goods != null}">
+                                            <div style="text-align: left">
+                                                ${goods.getDescs()}
+                                            </div>
+                                            <div style="text-align: right">
+                                                <a href="${pageContext.request.contextPath}/LostAndFound/toGoodsDetail?id=${goods.getGoodsId()}">查看</a> |
+                                                <a href="${pageContext.request.contextPath}/LostAndFound/toUpdate?id=${goods.getGoodsId()}">修改</a> |
+                                                <a href="${pageContext.request.contextPath}/LostAndFound/deleting?id=${goods.getGoodsId()}">删除</a>
+                                            </div>
+                                            </c:if>
+                                        </td>
+
+                                    <c:if test="${goods == null}">
                                         <p>未发布过内容</p>
                                     </c:if>
+                                    <br>
                                 </tr>
+                                </div>
                             </c:forEach>
                         </tbody>
                     </li>
                 </ul>
                 <div class = "out">
-                    <button onclick="testClick(this);">退出登录</button>
+                    <form action="${pageContext.request.contextPath}/loginOut">
+                        <button type="submit"  onclick="testClick(this);">退出登录</button>
+                    </form>
                 </div>
             </div>
 

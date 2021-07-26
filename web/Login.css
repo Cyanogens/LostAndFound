@@ -77,7 +77,7 @@ body{
 }
 form{
     position: absolute;
-    background-image: linear-gradient(19deg, #839aa8 0%, #6badde);
+    background-image: linear-gradient(19deg, #67b3f6 0%, #63b7f5);
     height: 100%;
     border-radius: 8px;
     transform-style: preserve-3d;

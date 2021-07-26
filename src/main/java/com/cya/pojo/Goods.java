@@ -20,4 +20,5 @@ public class Goods {
     Date releaseTime;
     String label;
     String typeTable;
+    User user;
 }

@@ -3,22 +3,22 @@ package com.cya.servlet;
 import com.cya.pojo.User;
 import com.cya.service.UserService;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 /**
  * Servlet implementation class UserServlet
  * @author WANGZIC
  */
 @WebServlet("/updateUsers")
-public class UpdateUsers extends LoginServlet {
+public class UpdateUsers extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class UpdateUsers extends LoginServlet {
         req.setAttribute("sex",user.getSex());
         req.setAttribute("address",user.getAddress());
         req.setAttribute("telephone",user.getTelephone());
-        req.getRequestDispatcher("/webPages/ChangeMyMessage.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/JSP/ChangeMyMessage.jsp").forward(req,resp);
     }
 
     @Override
@@ -38,16 +38,17 @@ public class UpdateUsers extends LoginServlet {
         req. setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
         UserService userService = new UserService();
-        int user_Id = (int) req.getSession().getAttribute("user_Id");
+        String user_Id = (String) req.getSession().getAttribute("user_Id");
         String user_Xh = req.getParameter("user_Xh");
         String sex = req.getParameter("sex");
         String username = req.getParameter("username");
         String address = req.getParameter("address");
+        String password = req.getParameter("password");
         String telephone = req.getParameter("telephone");
         System.out.println(user_Id);
         User user = null;
         try {
-            user = userService.updataUsers(user_Id,username,sex,telephone,user_Xh,address);
+            user = userService.updataUsers(user_Id,username,sex,telephone,user_Xh,address,password);
             req.getSession().setAttribute("user",user);
             System.out.println("userUpdata try success");
         } catch (SQLException throwables) {
@@ -67,7 +68,7 @@ public class UpdateUsers extends LoginServlet {
         }else{
             System.out.println("updata fail");
             out.print("<script language='javascript' charset='utf-8'>alert('updata fail!!');</script>");
-            resp.sendRedirect("updateUsers");
+            resp.sendRedirect("http://localhost:8080/web/LostAndFound/toUpdateMyself");
 
         }
         System.out.println(user_Xh);

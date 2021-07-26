@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <title>欢迎光临</title>
-    <link rel="stylesheet" type="text/css" href=${pageContext.request.contextPath}/CSS/Person.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Person.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/ChangeMyMessage.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Menu.css">
 </head>
@@ -18,22 +18,22 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toPerson" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toPerson" target="_self">
                 <div class="font_style">个人中心</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toFind" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toLose" target="_self">
                 <div class="font_style">招领信息</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toAdd" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toAdd" target="_self">
                 <div class="font_style">发布信息</div>
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/web/LostAndFound/toLose" target="_self">
+            <a href="${pageContext.request.contextPath}/LostAndFound/toFind" target="_self">
                 <div class="font_style">挂失信息</div>
             </a>
         </li>
@@ -56,33 +56,33 @@
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">学号</div>
-                        <ul>
-                            <li>
-                                2025121025
+                        <ul class="left_ul">
+                            <li class="left_li">
+                                ${myself.user_Xh}
                             </li>
                         </ul>
                     </div>
                 </div>
-                <br>
-                <br>
+                </br>
+                </br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">姓名</div>
-                        <ul>
-                            <li>
-                                ×××
+                        <ul class="left_ul">
+                            <li class="left_li">
+                                ${myself.user_Name}
                             </li>
                         </ul>
                     </div>
                 </div>
-                <br>
-                <br>
+                </br>
+                </br>
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">联系电话</div>
-                        <ul>
-                            <li>
-                                18588874029
+                        <ul class="left_ul">
+                            <li class="left_li">
+                                ${myself.telephone}
                             </li>
                         </ul>
                     </div>
@@ -92,9 +92,9 @@
                 <div class="nav">
                     <div class="nav-li">
                         <div class="title">联系地址</div>
-                        <ul>
-                            <li>
-                                ..........
+                        <ul class="left_ul">
+                            <li class="left_li">
+                                ${myself.address}
                             </li>
                         </ul>
                     </div>
@@ -102,27 +102,25 @@
             </div>
             <br>
             <br>
-            <br>
             <div class = "changeMessage">
-                <a href="${pageContext.request.contextPath}/updateUsers" style="text-decoration: none">编辑资料</a>
-            </div>
-
+                <a href="${pageContext.request.contextPath}/LostAndFound/toUpdateMyself" style="text-decoration: none;">编辑资料</a>
+            </div>dian
         </div>
         <div id="right">
             <div class="top_title">
                 <span>编辑个人资料</span>
             </div>
-            <form action="" method="post" class="change">
-                <input type="text" name="number" maxlength="10" placeholder="2025121025" required>
-                </br>
-                <input type="text" name="name" placeholder="×××" required>
-                </br>
-                <input type="password" name="pwd" placeholder="密码" required>
-                </br>
-                <input type="text" name="telephone" maxlength="11" placeholder="18588874029" required>
-                </br>
-                <input type="text" name="address" placeholder="........." required>
-                </br>
+            <form action="${pageContext.request.contextPath}/updateUsers" method="post" class="change">
+                <input type="text" name="user_Xh" maxlength="10" value="${myself.user_Xh}" placeholder="学号" required>
+                <br>
+                <input type="text" name="username" value="${myself.user_Name}" placeholder="姓名" required>
+                <br>
+                <input type="password" name="password" value="${myself.password}" placeholder="密码" required>
+                <br>
+                <input type="text" name="telephone" maxlength="11" value="${myself.telephone}" placeholder="" required>
+                <br>
+                <input type="text" name="address" value="${myself.address}" required>
+                <br>
                 <input type="submit" value="修改完成">
             </form>
         </div>

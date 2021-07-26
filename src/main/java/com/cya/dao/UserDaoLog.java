@@ -14,9 +14,10 @@ public class UserDaoLog {
         Statement stmt = conn.createStatement();
         ResultSet rs ;
         String sql ="select * from lostandfound.user where user_Xh = '"+user_Xh+"' and password = '"+password+"'";
-        /*  users 是数据库中存放用户信息的表格名
-            user_Xh password 是用户账号和用户密码字段名
-        * */
+        /*
+         * users 是数据库中存放用户信息的表格名
+         * user_Xh password 是用户账号和用户密码字段名
+         */
         rs = stmt.executeQuery(sql);
         User user = null;
         if (rs.next()){
