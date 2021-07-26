@@ -34,24 +34,14 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> queryTypeGoods(String str) {
-        return goodsMapper.queryTypeGoods(str);
-    }
-
-    @Override
     public List<Goods> queryFuzzyGoods(String str, String label,String typeTable) {
         str = "%" + str + "%";
         return goodsMapper.queryFuzzyGoods(str,label,typeTable);
     }
 
     @Override
-    public List<Goods> queryAllGoodsByUserId(String userId) {
-        return goodsMapper.queryAllGoodsByUserId(userId);
-    }
-
-    @Override
-    public Goods queryGoodsByGoodsId(String goodsId) {
-        return goodsMapper.queryGoodsByGoodsId(goodsId);
+    public List<Goods> queryGoods(String typeTable, String userId, String goodsId) {
+        return goodsMapper.queryGoods(typeTable,userId,goodsId);
     }
 
     @Override

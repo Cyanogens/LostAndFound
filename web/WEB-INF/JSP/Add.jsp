@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Cyanogen
-  Date: 2021/7/24
-  Time: 16:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -14,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Menu.css">
 </head>
 <body>
+
+<!--导航栏-->
 <div id="menu">
     <ul>
         <li>
@@ -57,7 +52,6 @@
     </div>
     <div><input class="input background" name="times" type="date" placeholder="日期" required></div>
     <div><input class="input background" name="place" type="text" placeholder="地点" required></div>
-<%--    <div><input class="input background" name="" type="text" placeholder="联系电话" required></div>--%>
     <div><textarea class="detail background" name="descs" placeholder="详情"></textarea></div>
     <div id="preview"></div>
     <div class="button">
@@ -69,6 +63,7 @@
         <div class="file_btn">发布信息</div>
     </div>
 </form>
+
 <script>
     /*背景*/
     !function(){
@@ -91,7 +86,7 @@
 
             return{
 
-                l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",99)
+                l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",166)
 
             }
 
@@ -119,7 +114,7 @@
 
                     l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
 
-                    t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=0.5,r.strokeStyle="rgb(32,184,198)",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+                    t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=0.65,r.strokeStyle="rgb(43,238,255)",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
 
             }),
 
@@ -164,17 +159,16 @@
             setTimeout(function(){i()},100)
 
     }();
-
 </script>
 </body>
 <script>
     /*上传图片并显示*/
-    var _URL = window.URL || window.webkitURL;
+    const _URL = window.URL || window.webkitURL;
 
     function preview(file) {
-        var prevDiv = document.getElementById('preview');
+        const prevDiv = document.getElementById('preview');
         if (file.files && file.files[0]) {
-            var reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = function (evt) {
                 prevDiv.innerHTML = '<img id="imgnode" src="' + evt.target.result + '" />';
                 console.log(evt.target.result)

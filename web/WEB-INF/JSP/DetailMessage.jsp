@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Cyanogen
-  Date: 2021/7/25
-  Time: 10:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head  lang="en">
@@ -61,6 +54,20 @@
     /*背景*/
     !function () {
 
+        let a;
+        let c;
+        let u;
+        let m = document.createElement("canvas");
+        let r = m.getContext("2d");
+        let x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+
+            function (n) {
+
+                window.setTimeout(n, 1e3 / 45)
+
+            };
+        let y = {x: null, y: null, max: 2e4};
+
         function n(n, e, t) {
 
             return n.getAttribute(e) || t
@@ -75,11 +82,11 @@
 
         function t() {
 
-            var t = e("script"), o = t.length, i = t[o - 1];
+            const t = e("script"), o = t.length, i = t[o - 1];
 
             return {
 
-                l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 99)
+                l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 166)
 
             }
 
@@ -97,7 +104,7 @@
 
             r.clearRect(0, 0, a, c);
 
-            var n, e, t, o, m, l;
+            let n, e, t, o, m, l;
 
             s.forEach(function (i, x) {
 
@@ -107,7 +114,7 @@
 
                     l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m),
 
-                    t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = 0.5, r.strokeStyle = "rgb(32,184,198)", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = 0.65, r.strokeStyle = "rgb(43,238,255)", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
 
             }),
 
@@ -115,19 +122,9 @@
 
         }
 
-        var a, c, u, m = document.createElement("canvas"),
+        let d = t(), l = "c_n" + d.l,
 
-            d = t(), l = "c_n" + d.l, r = m.getContext("2d"),
-
-            x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-
-                function (n) {
-
-                    window.setTimeout(n, 1e3 / 45)
-
-                },
-
-            w = Math.random, y = {x: null, y: null, max: 2e4};
+            w = Math.random;
         m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0].appendChild(m), o(), window.onresize = o,
 
             window.onmousemove = function (n) {
@@ -142,9 +139,9 @@
 
             };
 
-        for (var s = [], f = 0; d.n > f; f++) {
+        for (let s = [], f = 0; d.n > f; f++) {
 
-            var h = w() * a, g = w() * c, v = 2 * w() - 1, p = 2 * w() - 1;
+            const h = w() * a, g = w() * c, v = 2 * w() - 1, p = 2 * w() - 1;
             s.push({x: h, y: g, xa: v, ya: p, max: 6e3})
 
         }

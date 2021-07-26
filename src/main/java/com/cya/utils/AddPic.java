@@ -8,8 +8,9 @@ import java.io.IOException;
 
 public class AddPic {
     public static Goods addPic(MultipartFile file, Goods goods) {
-        //图片上传成功后，将图片的地址写到数据库/
-        //保存图片的路径,tomcat中有配置
+
+        //图片上传成功后，将图片写到数据库
+        //保存图片的路径
         String filePath = "D:\\Code\\Practice\\SSM\\LostAndFound\\pic";
         File path = new File(filePath);
         if (!path.exists()){

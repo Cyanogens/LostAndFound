@@ -17,12 +17,9 @@ public interface GoodsMapper {
     void updateGoods(Goods goods);
 
     //查
-    Goods queryGoods(int goodsId);
-    List<Goods> queryTypeGoods(String typeTable);
-    List<Goods> queryAllGoodsByUserId(String userId);
-    //对于多个参数,要用@Param指明该参数代表什么
-    List<Goods> queryFuzzyGoods(@Param("str") String str,@Param("label") String label,@Param("typeTable") String typeTable);
-    Goods queryGoodsByGoodsId(String goodsId);
+    // 对于多个参数,要用@Param指明该参数代表什么
+    List<Goods> queryGoods(@Param("typeTable") String typeTable, @Param("userId") String userId, @Param("goodsId") String goodsId);
+    List<Goods> queryFuzzyGoods(@Param("str") String str, @Param("label") String label, @Param("typeTable") String typeTable);
     Goods queryGoodsOfUser(Goods goods);
 
 }

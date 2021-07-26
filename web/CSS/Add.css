@@ -1,10 +1,8 @@
 form{
     text-align: center;
-    margin-left: calc(30vw);
-    width: calc(30vw);
+    margin-left: calc(25vw);
+    width: calc(50vw);
     padding: 10px 40px;
-    border: 2px solid #5effb2;
-    border-radius: 50px;
     background: rgba(255, 255, 255, 0);
 }
 div{
@@ -14,44 +12,44 @@ div{
     justify-content: center;
 }
 .background{
-    border: 1px solid #5effb2;
-    background-color: rgba(125, 238, 200, 0.09);
+    border: 1px solid #3048fd;
+    background-color: rgba(75, 79, 255, 0.21);
     outline: none;
     color: #767676;
-    font-size: 15px;
+    font-size: 20px;
     margin: 10px 0;
 }
 .input {
-    border-radius: 25px;
-    width: 500px;
-    height: 50px;
+    border-radius: calc(3vh);
+    width: calc(40vw);
+    height: calc(6vh);
 }
 .detail{
     border-radius: 10px;
-    width: 500px;
-    height: 120px;
+    width: calc(40vw);
+    height: calc(14vh);
     resize: none;
 }
 
 .input:focus,.contact_input:focus,.detail:focus{
-     background-color: white;
-     color: #111111;
- }
+    background-color: white;
+    color: #111111;
+}
 /*图片浏览*/
 #preview,.img,img {
     border-radius: 10px;
-    width: 300px;
-    height: 200px;
+    width: calc(30vw);
+    height: calc(30vh);
 }
 #preview {
-    border: 1px solid #5effb2;
-    background-color: rgba(125, 238, 200, 0.09);
+    border: 1px solid #3048fd;
+    background-color: rgba(75, 79, 255, 0.21);
 }
 /*按钮设置*/
 .button{
     appearance: none;
-    background: rgba(125, 238, 200, 0.5);
-    color: #fff;
+    background: rgba(64,93,232,0.51);
+    color: #ffffff;
     font-size: 20px;
     padding: 0;
     border-radius: 25px;

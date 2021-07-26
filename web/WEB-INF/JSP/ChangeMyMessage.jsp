@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Cyanogen
-  Date: 2021/7/24
-  Time: 16:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -14,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Menu.css">
 </head>
 <body>
+
 <!--导航栏-->
 <div id="menu">
     <ul>
@@ -104,7 +98,7 @@
             <br>
             <div class = "changeMessage">
                 <a href="${pageContext.request.contextPath}/LostAndFound/toUpdateMyself" style="text-decoration: none;">编辑资料</a>
-            </div>dian
+            </div>
         </div>
         <div id="right">
             <div class="top_title">
@@ -117,9 +111,9 @@
                 <br>
                 <input type="password" name="password" value="${myself.password}" placeholder="密码" required>
                 <br>
-                <input type="text" name="telephone" maxlength="11" value="${myself.telephone}" placeholder="" required>
+                <input type="text" name="telephone" maxlength="11" value="${myself.telephone}" placeholder="联系电话" required>
                 <br>
-                <input type="text" name="address" value="${myself.address}" required>
+                <input type="text" name="address" value="${myself.address}" placeholder="地址" required>
                 <br>
                 <input type="submit" value="修改完成">
             </form>
@@ -151,7 +145,7 @@
 
             return{
 
-                l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",99)
+                l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",166)
 
             }
 
@@ -179,7 +173,7 @@
 
                     l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
 
-                    t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=0.5,r.strokeStyle="rgb(32,184,198)",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+                    t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=0.65,r.strokeStyle="rgb(43,238,255)",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
 
             }),
 

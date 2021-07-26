@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Cyanogen
-  Date: 2021/7/24
-  Time: 16:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -65,10 +58,11 @@
                 <div class="item">
                     <a href="${pageContext.request.contextPath}/LostAndFound/toGoodsDetail?id=${goods.getGoodsId()}">
                         <img id="pic" alt="" src="/pic/${goods.getPic()}">
+                    </a>
                         <div class="resume">
                             ${goods.getDescs()}
                         </div>
-                    </a>
+
                 </div>
         </c:forEach>
     </div>
@@ -103,7 +97,7 @@
 
             return {
 
-                l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 99)
+                l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 166)
 
             }
 
@@ -131,7 +125,7 @@
 
                     l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m),
 
-                    t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = 0.5, r.strokeStyle = "rgb(32,184,198)", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = 0.55, r.strokeStyle = "rgb(43,238,255)", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
 
             }),
 

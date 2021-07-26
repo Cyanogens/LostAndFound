@@ -37,7 +37,7 @@
     </bean>
 
 
-    <!--等价于原来注入获得sqlSession-->
+    <!--方便获得sqlSession-->
     <bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入sqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>

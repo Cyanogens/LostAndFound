@@ -1,9 +1,9 @@
 html{
-    background: rgba(243, 243, 243, 0.72);
+    background: rgba(174,174,174,0.32)
 }
 /*左侧导航栏*/
 #menu{
-    width: 12%;
+    width: 10%;
     height: auto;
     float: left;
     clear: both;
@@ -53,20 +53,20 @@ html{
 
 #menu ul li:first-child a {
     border-left: 10px solid #3498db;
-    height: 200px;
+    height: calc(24vh);
 }
 #menu ul li:nth-child(2) a {
     border-left: 10px solid #ffd071;
-    height: 200px;
+    height: calc(24vh);
 }
 #menu ul li:nth-child(3) a {
     border-left: 10px solid #f0776c;
-    height: 200px;
+    height: calc(24vh);
 }
 
 #menu ul li:last-child a {
     border-left: 10px solid #64ff86;
-    height: 200px;
+    height: calc(24vh);
 }
 
 #menu ul li a:after {

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Cyanogen
-  Date: 2021/7/24
-  Time: 16:31
-  To change this template use File | Settings | File Templates.
---%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,7 +13,7 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="description" content="This is my page">
     <script type="text/javascript">
-        var img
+        let img;
         window.onload =function(){
             img = document.getElementById("img");
             img.onclick = _change();
@@ -31,9 +24,24 @@
             1.得到img元素
             2.修改其src为/day09-1/VerifyCodeServlet
             */
-            var date = new Date().getTime();
+            const date = new Date().getTime();
             img.src = "${pageContext.request.contextPath}/VerifyCodeServlet?a=" + date;
         }
+    </script>
+<%--    <script type="text/javascript">--%>
+<%--        $(function (){--%>
+<%--            if (window.history && window.history.pushState){--%>
+<%--                $(window).on('popstate',function (){--%>
+<%--                    window.history.pushState('forward', null, '#');--%>
+<%--                    window.history.forward(1);--%>
+<%--                });--%>
+<%--            }--%>
+<%--            window.history.pushState('forward', null,'#');--%>
+<%--            window.history.forward(1);--%>
+<%--        });--%>
+<%--    </script>--%>
+    <script type="text/javascript">
+
     </script>
 </head>
 <body>
@@ -69,6 +77,7 @@
     </div>
 </div>
 <canvas id="canv"></canvas>
+
 <!--背景-->
 <script>
     const c = document.getElementById('canv');
@@ -92,7 +101,6 @@
                         Math.sin(j / 50 - t / 50 - i / 118) +
                         (i * 0.9) * Math.sin(j / 25 - (i + t) / 65)));
             }
-            ;
             $.stroke();
         }
     };
@@ -111,14 +119,15 @@
     };
     run();
 </script>
+
 </body>
 <script>
     $(function(){
         document.onkeydown=keyDownSearch;
         function keyDownSearch(e) {
             // 兼容FF和IE和Opera
-            var theEvent = e || window.event;
-            var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+            const theEvent = e || window.event;
+            const code = theEvent.keyCode || theEvent.which || theEvent.charCode;
             if (code === 13) {
                 $('#submit').click();//具体处理函数
                 return false;
@@ -127,4 +136,5 @@
         }
     });
 </script>
+
 </html>

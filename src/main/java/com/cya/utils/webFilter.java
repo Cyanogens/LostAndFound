@@ -12,9 +12,12 @@ import java.io.PrintWriter;
 * */
 @WebFilter(filterName = "webFilter",urlPatterns = "/webPages/*")
 public class webFilter implements Filter {
+
+    @Override
     public void init(FilterConfig config) throws ServletException {
     }
 
+    @Override
     public void destroy() {
     }
 

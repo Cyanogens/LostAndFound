@@ -25,12 +25,13 @@ public class GoodsActionController {
     public String toPerson(Model model, HttpServletRequest request){
 
         String userId = (String) request.getSession().getAttribute("user_Id");
-        List<Goods> myGoods = goodsService.queryAllGoodsByUserId(userId);
+        List<Goods> myGoods = goodsService.queryGoods(null, userId, null);
         model.addAttribute("myList", myGoods);
 
         User user = (User) request.getSession().getAttribute("user");
-        if (user.getAddress() == null)
+        if (user.getAddress() == null) {
             user.setAddress("无");
+        }
         model.addAttribute("myself",user);
         return "Person";
     }
@@ -38,7 +39,7 @@ public class GoodsActionController {
     //跳转到Find页面
     @RequestMapping("/toFind")
     public String toFind(Model model){
-        List<Goods> findList = goodsService.queryTypeGoods("寻物启事");
+        List<Goods> findList = goodsService.queryGoods("寻物启事", null, null);
         model.addAttribute("list",findList);
         return "Find";
     }
@@ -46,8 +47,8 @@ public class GoodsActionController {
     //跳转到Lose页面
     @RequestMapping("/toLose")
     public String toLose(Model model){
-        List<Goods> findList = goodsService.queryTypeGoods("失物招领");
-        model.addAttribute("list",findList);
+        List<Goods> loseList = goodsService.queryGoods("失物招领", null, null);
+        model.addAttribute("list",loseList);
         return "Lose";
     }
 
@@ -61,9 +62,8 @@ public class GoodsActionController {
     //跳转到物品详情页
     @RequestMapping("/toGoodsDetail")
     public String toGoodsDetail(Model model, String id){
-        Goods goods = goodsService.queryGoodsByGoodsId(id);
-        Goods goodses = goodsService.queryGoodsOfUser(goods);
-        System.out.println(goodses);
+        List<Goods> goods = goodsService.queryGoods(null, null, id);
+        Goods goodses = goodsService.queryGoodsOfUser(goods.get(0));
         model.addAttribute("goods", goodses);
         return "DetailMessage";
     }
@@ -71,8 +71,8 @@ public class GoodsActionController {
     //跳转到物品更新页面
     @RequestMapping("/toUpdate")
     public String toUpdate(Model model, String id){
-        Goods goods = goodsService.queryGoodsByGoodsId(id);
-        model.addAttribute("goods", goods);
+        List<Goods> goods = goodsService.queryGoods(null, null, id);
+        model.addAttribute("goods", goods.get(0));
         return "UpdateGoods";
     }
 
@@ -80,8 +80,9 @@ public class GoodsActionController {
     @RequestMapping("/toUpdateMyself")
     public String toUpdateMyself(Model model, HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user");
-        if (user.getAddress() == null)
+        if (user.getAddress() == null) {
             user.setAddress("无");
+        }
         model.addAttribute("myself",user);
         return "ChangeMyMessage";
     }

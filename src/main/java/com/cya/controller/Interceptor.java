@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Cyanogen
+ */
 //拦截器
 public class Interceptor implements HandlerInterceptor {
     @Override
@@ -13,14 +16,19 @@ public class Interceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
 
         //用户处于登录状态
-        if (session.getAttribute("user") != null)
+        if (session.getAttribute("user") != null) {
             return true;
+        }
 
-        if (request.getRequestURI().contains("login"))
+        //用户发送登录请求
+        if (request.getRequestURI().contains("login")) {
             return true;
+        }
 
-        if (request.getRequestURI().contains("register"))
+        //用户发送注册请求
+        if (request.getRequestURI().contains("register")) {
             return true;
+        }
 
         request.getRequestDispatcher("/WEB-INF/JSP/Error.jsp").forward(request,response);
         return false;

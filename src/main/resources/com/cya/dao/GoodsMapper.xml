@@ -20,16 +20,23 @@
         where goods_Id = #{goodsId} and user_Id = #{userId}
     </update>
 
-    <select id="queryTypeGoods" parameterType="string" resultType="goods">
-        select * from lostandfound.goods where goods.type_Table = #{typeTable};
-    </select>
+    <select id="queryGoods" resultType="goods">
+        select * from lostandfound.goods
+        <where>
 
-    <select id="queryAllGoodsByUserId" parameterType="string" resultType="goods">
-        select * from lostandfound.goods where user_Id = #{userId};
-    </select>
+            <if test='typeTable != null and typeTable != ""'>
+                and goods.type_Table = #{typeTable}
+            </if>
 
-    <select id="queryGoodsByGoodsId" parameterType="string" resultType="goods">
-        select * from lostandfound.goods where goods_Id = #{goodsId};
+            <if test='userId != null and userId != ""'>
+                and goods.user_Id = #{userId}
+            </if>
+
+            <if test='goodsId != null and goodsId != ""'>
+                and goods.goods_Id = #{goodsId}
+            </if>
+
+        </where>
     </select>
 
     <!--有多个参数时无需parameterType,即使是相同类型-->
@@ -48,7 +55,8 @@
         </where>
 
     </select>
-    
+
+    <!--联表查询-->
     <resultMap id="map" type="goods">
         <result property="pic" column="pic"/>
         <result property="descs" column="descs"/>

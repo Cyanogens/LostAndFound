@@ -16,9 +16,7 @@ public interface GoodsService {
     void updateGoods(Goods goods);
 
     //查
-    List<Goods> queryTypeGoods(String str);
-    List<Goods> queryFuzzyGoods(String str,String label, String typeTable);
-    List<Goods> queryAllGoodsByUserId(String userId);
-    Goods queryGoodsByGoodsId(String goodsId);
+    List<Goods> queryFuzzyGoods(String str, String label, String typeTable);
+    List<Goods> queryGoods(String typeTable, String userId, String goodsId);
     Goods queryGoodsOfUser(Goods goods);
 }

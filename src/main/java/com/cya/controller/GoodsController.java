@@ -26,8 +26,8 @@ public class GoodsController {
     @RequestMapping("/adding")
     public String addingGoods(Goods goods, MultipartFile file, HttpServletRequest request){
 
-        String user_id = (String) request.getSession().getAttribute("user_Id");
-        goods.setUserId(user_id);
+        String userId = (String) request.getSession().getAttribute("user_Id");
+        goods.setUserId(userId);
 
         String type = request.getParameter("type");
         goods.setTypeTable(type);
@@ -37,10 +37,12 @@ public class GoodsController {
         Goods goodses = AddPic.addPic(file, goods);
 
         goodsService.addGoods(goodses);
-        if (type.equals("寻物启事"))
+        if ("寻物启事".equals(type)) {
             return "redirect:/LostAndFound/toFind";
-        else
-            return  "redirect:/LostAndFound/toLose";
+        }
+        else {
+            return "redirect:/LostAndFound/toLose";
+        }
     }
 
     //进行物品更新操作
@@ -53,15 +55,14 @@ public class GoodsController {
         String label = request.getParameter("label");
         goods.setTypeTable(label);
 
-        String user_id = (String) request.getSession().getAttribute("user_Id");
-        goods.setUserId(user_id);
+        String userId = (String) request.getSession().getAttribute("user_Id");
+        goods.setUserId(userId);
 
         Goods goodses = AddPic.addPic(file, goods);
         goodsService.updateGoods(goodses);
 
         return "redirect:/LostAndFound/toPerson";
     }
-
 
     //删除
     //通过goodsId删除
@@ -81,9 +82,11 @@ public class GoodsController {
         List<Goods> goods = goodsService.queryFuzzyGoods(str,label,type);
         model.addAttribute("list",goods);
 
-        if (type.equals("寻物启事"))
+        if ("寻物启事".equals(type)) {
             return "Find";
-        else
+        }
+        else {
             return "Lose";
+        }
     }
 }
